@@ -1,5 +1,4 @@
-// import Image from "next/image";
-import Form from "./ui/create-form";
+import Form from "../ui/create-form";
 
 export default function Home() {
   return (
