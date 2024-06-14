@@ -6,7 +6,7 @@ export default function Form() {
         <form>
             <div className="grid grid-cols-5 gap-4 mt-4 max-w-full mx-auto">
                 <div className="mb-5">
-                    <label htmlFor="date" className="block mb-2 text-m font-medium text-gray-900 dark:text-white">
+                    <label htmlFor="date" className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
                         date
                     </label>
                     <Datepicker weekStart={1} />
@@ -15,7 +15,7 @@ export default function Form() {
                 <div className="mb-5">
                     <label 
                         htmlFor="location" 
-                        className="block mb-2 text-m font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
                         >
                             where
                     </label>
@@ -30,7 +30,7 @@ export default function Form() {
                 <div className="mb-5">
                     <label 
                         htmlFor="description" 
-                        className="block mb-2 text-m font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
                         >
                             what
                     </label>
@@ -45,7 +45,7 @@ export default function Form() {
                 <div className="mb-5">
                     <label 
                         htmlFor="amount" 
-                        className="block mb-2 text-m font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
                         >
                             amount
                     </label>
@@ -64,7 +64,7 @@ export default function Form() {
                     </div>
                 </div>
 
-                <div className="mb-5 mt-1 flex block justify-center items-center h-full p-2.5">
+                <div className="mb-5 mt-2 flex block justify-center items-center h-full p-2.5">
                     <button 
                         type="submit" 
                         className="text-white bg-green-400 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm sm:w-full px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
