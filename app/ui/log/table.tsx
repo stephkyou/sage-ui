@@ -1,5 +1,6 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { Money } from "@/app/lib/data";
+import { formatCurrency, formatFullDate } from "@/app/lib/utils";
 
 type Transaction = {
     id: number
@@ -46,25 +47,25 @@ export default async function TransactionsTable({ log }: { log: LogResult }) {
                                 className="w-full border-b py-3 text-l last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg hover:bg-gray-50 transition-colors duration-200 ease-in-out"
                             >
                                 <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex items-center gap-3">
-                                    <p>{transaction.date}</p>
-                                </div>
+                                    <div className="flex items-center gap-3">
+                                        <p>{formatFullDate(transaction.date)}</p>
+                                    </div>
                                 </td>
                                 <td className="whitespace-nowrap px-3 py-3">
-                                {transaction.location}
+                                    {transaction.location}
                                 </td>
                                 <td className="whitespace-wrap px-3 py-3">
-                                {transaction.description}
+                                    {transaction.description}
                                 </td>
                                 <td className="whitespace-nowrap px-3 py-3">
-                                ${transaction.amount.amount/100}
+                                    {formatCurrency(transaction.amount.amount)}
                                 </td>
                                 <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex justify-end gap-3">
-                                    <button className="text-blue-500 hover:bg-gray-200 p-1 rounded-md">
-                                        <TrashIcon className="w-5 text-red-500"/>
-                                    </button>
-                                </div>
+                                    <div className="flex justify-end gap-3">
+                                        <button className="text-blue-500 hover:bg-gray-200 p-1 rounded-md">
+                                            <TrashIcon className="w-5 text-red-500"/>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                             ))}

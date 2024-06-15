@@ -30,3 +30,36 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
       totalPages,
     ];
   };
+
+export const formatFullDate = (
+  dateStr: string,
+) => {
+  const date = new Date(dateStr);
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  };
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  return formatter.format(date);
+};
+
+export const formatMonthDate = (
+  dateStr: string,
+) => {
+  const date = new Date(dateStr);
+  const options: Intl.DateTimeFormatOptions = {
+    day: undefined,
+    month: 'long',
+    year: 'numeric',
+  };
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  return formatter.format(date);
+};
+
+export const formatCurrency = (amount: number) => {
+  return (amount / 100).toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+};

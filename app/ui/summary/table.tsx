@@ -1,4 +1,5 @@
 import { Money } from "@/app/lib/data";
+import { formatCurrency, formatMonthDate } from "@/app/lib/utils";
 
 type Summary = {
     month: string;
@@ -10,12 +11,6 @@ type SummaryResult = {
 };
 
 export default async function SummaryTable({ summaries }: { summaries: SummaryResult }) {
-    /* const summaries = [
-        {month: 'April 2024', total: '$59.99'},
-        {month: 'May 2024', total: '$22.34'},
-        {month: 'June 2024', total: '$71.24'},
-    ] */
-
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
@@ -39,11 +34,11 @@ export default async function SummaryTable({ summaries }: { summaries: SummaryRe
                             >
                                 <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                 <div className="flex items-center gap-3">
-                                    <p>{summary.month}</p>
+                                    <p>{formatMonthDate(summary.month)}</p>
                                 </div>
                                 </td>
                                 <td className="whitespace-nowrap px-3 py-3">
-                                {summary.total.amount}
+                                {formatCurrency(summary.total.amount)}
                                 </td>
                             </tr>
                             ))}
