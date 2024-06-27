@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const generatePagination = (currentPage: number, totalPages: number) => {
     // If the total number of pages is 7 or less,
     // display all pages without any ellipsis.
@@ -34,27 +36,13 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 export const formatFullDate = (
   dateStr: string,
 ) => {
-  const date = new Date(dateStr);
-  const options: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  };
-  const formatter = new Intl.DateTimeFormat('en-US', options);
-  return formatter.format(date);
+  return moment(dateStr).format('MMMM D, YYYY')
 };
 
 export const formatMonthDate = (
   dateStr: string,
 ) => {
-  const date = new Date(dateStr);
-  const options: Intl.DateTimeFormatOptions = {
-    day: undefined,
-    month: 'long',
-    year: 'numeric',
-  };
-  const formatter = new Intl.DateTimeFormat('en-US', options);
-  return formatter.format(date);
+  return moment(dateStr).format('MMMM YYYY')
 };
 
 export const formatCurrency = (amount: number) => {
