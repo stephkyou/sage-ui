@@ -1,15 +1,20 @@
 'use client';
 
-import { useFormState } from "react-dom";
 import { Datepicker } from "flowbite-react";
 import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { addExpense } from "@/app/lib/actions";
+import { useRef } from "react";
 
 export default function Form() {
-  const [state, action] = useFormState(addExpense, { message: "" })
+  const ref = useRef<HTMLFormElement>(null);
 
   return (
-    <form action={action}>
+    <form 
+      ref={ref} 
+      action={async (formData) => {
+        await addExpense(formData);
+        ref.current?.reset();
+    }}>
       <div className="grid grid-cols-5 gap-4 mt-4 max-w-full mx-auto">
         <div className="mb-5">
           <label htmlFor="date" className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
