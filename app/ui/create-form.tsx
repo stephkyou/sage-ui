@@ -4,6 +4,8 @@ import { Datepicker } from "flowbite-react";
 import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { addExpense } from "@/app/lib/actions";
 import { useRef } from "react";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 export default function Form() {
   const ref = useRef<HTMLFormElement>(null);
@@ -14,6 +16,7 @@ export default function Form() {
       action={async (formData) => {
         await addExpense(formData);
         ref.current?.reset();
+        Notify.success('expense added successfully!');
     }}>
       <div className="grid grid-cols-5 gap-4 mt-4 max-w-full mx-auto">
         <div className="mb-5">
