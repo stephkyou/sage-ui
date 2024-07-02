@@ -10,12 +10,14 @@ type Transaction = {
     amount: Money
 }
 
-type LogResult = {
+export type LogResult = {
     show_id: boolean
     result: Transaction[]
 }
 
-export default async function TransactionsTable({ log }: { log: LogResult }) {
+export default async function TransactionsTable({ query, currentPage }: { query: string, currentPage: number }) {
+    const transactions: LogResult = await getFilteredTransactions(query, currentPage);
+    
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
@@ -41,7 +43,7 @@ export default async function TransactionsTable({ log }: { log: LogResult }) {
                             </tr>
                         </thead>
                         <tbody className="bg-white">
-                            {log.result?.map((transaction) => (
+                            {transactions.result?.map((transaction) => (
                             <tr
                                 key={transaction.id}
                                 className="w-full border-b py-3 text-l last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg hover:bg-gray-50 transition-colors duration-200 ease-in-out"

@@ -1,16 +1,29 @@
 //import { getServerSideProps } from '@/app/lib/data';
-import Table from '@/app/ui/log/table';
+import Table, { LogResult } from '@/app/ui/log/table';
 import Pagination from '@/app/ui/pagination';
 import { getLogData } from '@/app/lib/data';
+import Search from '@/app/ui/log/search';
 
-export default async function Page() {
-    const totalPages = 1;
-    const log = await getLogData();
+export const MAX_ITEMS_PER_PAGE = 10;
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const log : LogResult = await getLogData();
+  const totalPages = Math.ceil(log.result.length/MAX_ITEMS_PER_PAGE);
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
     
     return (
       <>
         <div className="text-4xl">transactions</div>
-        <Table log={log} />
+        <Search placeholder="search transactions..." />
+        <Table currentPage={currentPage} query={query}/>
         <div className="mt-5 flex w-full justify-center">
           <Pagination totalPages={totalPages} />
         </div>

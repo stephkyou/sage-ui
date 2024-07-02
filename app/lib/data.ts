@@ -1,4 +1,5 @@
 import { unstable_noStore as noStore } from 'next/cache';
+import { MAX_ITEMS_PER_PAGE } from '../(home)/log/page';
 
 export type Money = {
   amount: number
@@ -13,6 +14,17 @@ export async function getLogData() {
     throw new Error('Failed to fetch data')
   }
   
+  return res.json()
+}
+
+export async function getFilteredTransactions(query: string, page: number) {
+  noStore();
+
+  const res = await fetch(`http://localhost:8080/log?query=${query}&page=${page}&page-size=${MAX_ITEMS_PER_PAGE}`)
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
   return res.json()
 }
 
