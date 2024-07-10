@@ -29,4 +29,12 @@ export async function addExpense(formData: FormData) {
   return {
     message: "Form data processed",
   } 
-  }
+}
+
+export async function deleteExpense(id: number) {
+  const req = "http://127.0.0.1:8080/delete/"+id
+
+  await fetch(req, {
+    method: "DELETE"
+  })
+}

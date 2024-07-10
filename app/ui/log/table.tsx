@@ -1,6 +1,7 @@
-import { TrashIcon } from "@heroicons/react/24/outline";
 import { Money } from "@/app/lib/data";
 import { formatCurrency, formatFullDate } from "@/app/lib/utils";
+import { getFilteredTransactions } from "@/app/lib/data";
+import DeleteButton from "./delete-button";
 
 type Transaction = {
     id: number
@@ -63,11 +64,7 @@ export default async function TransactionsTable({ query, currentPage }: { query:
                                     {formatCurrency(transaction.amount.amount)}
                                 </td>
                                 <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                    <div className="flex justify-end gap-3">
-                                        <button className="text-blue-500 hover:bg-gray-200 p-1 rounded-md">
-                                            <TrashIcon className="w-5 text-red-500"/>
-                                        </button>
-                                    </div>
+                                    <DeleteButton id={transaction.id}/>
                                 </td>
                             </tr>
                             ))}

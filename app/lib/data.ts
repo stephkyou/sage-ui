@@ -20,7 +20,7 @@ export async function getLogData() {
 export async function getFilteredTransactions(query: string, page: number) {
   noStore();
 
-  const res = await fetch(`http://localhost:8080/log?query=${query}&page=${page}&page-size=${MAX_ITEMS_PER_PAGE}`)
+  const res = await fetch(`http://localhost:8080/log?query=${query}&page=${page}&page-size=${MAX_ITEMS_PER_PAGE}&show-id=true`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
