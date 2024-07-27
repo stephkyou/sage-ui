@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { NavBar } from '../ui/nav-bar';
  
 export const metadata: Metadata = {
-  title: 'Sage',
+  title: 'sage',
 };
  
 export default function Layout({ children }: { children: React.ReactNode }) { // children props here are the nested routes

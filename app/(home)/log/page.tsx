@@ -5,7 +5,7 @@ import Search from '@/app/ui/log/search';
 import { Metadata } from 'next';
 
 export const metadata : Metadata = { 
-  title: 'Sage | Log',
+  title: 'sage | log',
 };
 export const MAX_ITEMS_PER_PAGE = 10;
 

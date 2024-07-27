@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Concert_One, Inter } from "next/font/google";
+import { Concert_One } from "next/font/google";
 import "./globals.css";
 
 const inter = Concert_One({ 

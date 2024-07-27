@@ -10,17 +10,6 @@ export type Count = {
   count: number;
 };
 
-export async function getLogData() {
-  noStore();
-
-  const res = await fetch('http://localhost:8080/log?show-id=true')
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  
-  return res.json()
-}
-
 export async function getExpenseCount() {
   noStore();
 
@@ -40,6 +29,17 @@ export async function getSummaryCount() {
     throw new Error('Failed to fetch data')
   }
 
+  return res.json()
+}
+
+export async function getLogData() {
+  noStore();
+
+  const res = await fetch('http://localhost:8080/log?show-id=true')
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  
   return res.json()
 }
 
