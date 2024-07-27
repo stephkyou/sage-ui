@@ -1,5 +1,6 @@
 import { Money } from "@/app/lib/data";
 import { formatCurrency, formatMonthDate } from "@/app/lib/utils";
+import { getSummaryData } from "@/app/lib/data";
 
 type Summary = {
     month: string;
@@ -10,7 +11,9 @@ type SummaryResult = {
     result: Summary[];
 };
 
-export default async function SummaryTable({ summaries }: { summaries: SummaryResult }) {
+export default async function SummaryTable() {
+    const summaries: SummaryResult = await getSummaryData();
+
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">

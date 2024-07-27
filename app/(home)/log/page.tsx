@@ -1,14 +1,9 @@
-//import { getServerSideProps } from '@/app/lib/data';
 import Table from '@/app/ui/log/table';
 import Pagination from '@/app/ui/pagination';
-import { getExpenseCount } from '@/app/lib/data';
+import { getExpenseCount, Count } from '@/app/lib/data';
 import Search from '@/app/ui/log/search';
 
 export const MAX_ITEMS_PER_PAGE = 10;
-
-type Count = {
-  count: number;
-};
 
 export default async function Page({
   searchParams,

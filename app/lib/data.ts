@@ -6,6 +6,10 @@ export type Money = {
   currency: string
 }
 
+export type Count = {
+  count: number;
+};
+
 export async function getLogData() {
   noStore();
 
@@ -20,7 +24,18 @@ export async function getLogData() {
 export async function getExpenseCount() {
   noStore();
 
-  const res = await fetch('http://localhost:8080/count')
+  const res = await fetch('http://localhost:8080/count/log')
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+export async function getSummaryCount() {
+  noStore();
+
+  const res = await fetch('http://localhost:8080/count/summary')
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
