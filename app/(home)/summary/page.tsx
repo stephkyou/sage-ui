@@ -2,7 +2,11 @@ import Table from "@/app/ui/summary/table";
 import Pagination from "@/app/ui/pagination";
 import { getSummaryCount } from "@/app/lib/data";
 import { Count } from "@/app/lib/data";
+import { Metadata } from "next";
 
+export const metadata : Metadata = { 
+  title: 'Sage | Summary',
+};
 const MAX_SUMMARIES_PER_PAGE = 12;
 
 export default async function Page() {

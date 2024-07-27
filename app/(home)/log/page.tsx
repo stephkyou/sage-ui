@@ -2,7 +2,11 @@ import Table from '@/app/ui/log/table';
 import Pagination from '@/app/ui/pagination';
 import { getExpenseCount, Count } from '@/app/lib/data';
 import Search from '@/app/ui/log/search';
+import { Metadata } from 'next';
 
+export const metadata : Metadata = { 
+  title: 'Sage | Log',
+};
 export const MAX_ITEMS_PER_PAGE = 10;
 
 export default async function Page({
