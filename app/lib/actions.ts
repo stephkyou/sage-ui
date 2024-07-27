@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import moment from 'moment';
+import { revalidatePath } from 'next/cache';
 
 
 const FormSchema = z.object({
@@ -37,4 +38,6 @@ export async function deleteExpense(id: number) {
   await fetch(req, {
     method: "DELETE"
   })
+  
+  revalidatePath('/log')
 }
