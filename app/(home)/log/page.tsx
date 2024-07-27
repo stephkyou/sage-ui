@@ -1,10 +1,14 @@
 //import { getServerSideProps } from '@/app/lib/data';
-import Table, { LogResult } from '@/app/ui/log/table';
+import Table from '@/app/ui/log/table';
 import Pagination from '@/app/ui/pagination';
-import { getLogData } from '@/app/lib/data';
+import { getExpenseCount } from '@/app/lib/data';
 import Search from '@/app/ui/log/search';
 
 export const MAX_ITEMS_PER_PAGE = 10;
+
+type Count = {
+  count: number;
+};
 
 export default async function Page({
   searchParams,
@@ -14,8 +18,8 @@ export default async function Page({
     page?: string;
   };
 }) {
-  const log : LogResult = await getLogData();
-  const totalPages = Math.ceil(log.result.length/MAX_ITEMS_PER_PAGE);
+  const totalExpenses : Count = await getExpenseCount();
+  const totalPages = Math.ceil(totalExpenses.count/MAX_ITEMS_PER_PAGE);
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
     
